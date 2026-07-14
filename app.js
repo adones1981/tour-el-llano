@@ -13,15 +13,45 @@ const routeStops = [
     story: "La estación de metro El Llano marca el punto de partida de nuestro viaje. Inaugurada en 1978, conecta el centro de Santiago con el histórico Llano Subercaseaux, un sector residencial concebido como una ciudad jardín a principios del siglo XX. Aquí comienza una experiencia donde la música chilena y el sabor nocturno reviven la identidad comunal de San Miguel.",
     trackName: "Acorde de Entrada (Campanillas)",
     musicType: "metro",
-    pairingId: 3, // Points to La Fuente del Llano
+    pairingId: 3, // La Fuente del Llano
     pairingName: "La Fuente del Llano",
     pairingDesc: "Comienza a saborear el barrio con una visita a la clásica Fuente del Llano, famosa por sus abundantes sándwiches tradicionales.",
     image: "images/metro.png",
-    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4882,-70.6529"
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4827,-70.6497"
   },
   {
     id: 2,
     number: 2,
+    title: "Plaza El Llano (Parque)",
+    subtitle: "El pulmón verde central",
+    comicText: "NATURALEZA",
+    story: "La Plaza El Llano Subercaseaux es el corazón verde y social del barrio. Oferta senderos sombreados por centenarios árboles y palmeras, rodeados por elegantes edificios residenciales de mediados del siglo XX. Es un oasis de calma en medio de la comuna y punto de encuentro vecinal indispensable para familias y deportistas.",
+    trackName: "Melodía de Plaza (Acoustic Chime)",
+    musicType: "plaza",
+    pairingId: 2, // Café El Llano Orgánico
+    pairingName: "Café El Llano Orgánico",
+    pairingDesc: "Cruza la calle desde la plaza para disfrutar un café de grano y una deliciosa empanada artesanal en su terraza sombreada.",
+    image: "images/plaza.png",
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4824,-70.6506"
+  },
+  {
+    id: 3,
+    number: 3,
+    title: "Mural Ureta Cox",
+    subtitle: "Los Prisioneros en San Miguel",
+    comicText: "URBANO",
+    story: "Ubicado en la intersección de Gran Avenida con Ureta Cox, este colorido mural pop art rinde tributo a la cuna del rock de San Miguel. Recuerda la historia del trío que revolucionó el rock chileno de los 80, Jorge González, Claudio Narea y Miguel Tapia, cuyas composiciones nacieron recorriendo estas mismas esquinas del barrio.",
+    trackName: "El Baile de los que Sobran (Sintetizador)",
+    musicType: "prisioneros",
+    pairingId: 3, // La Fuente del Llano
+    pairingName: "La Fuente del Llano",
+    pairingDesc: "Cruza hacia Gran Avenida para comer un sándwich abundante y conversar sobre la rebeldía musical de los 80.",
+    image: "images/mural_background.png", // La foto real del mural subida por el usuario
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4984,-70.6514"
+  },
+  {
+    id: 4,
+    number: 4,
     title: "Sabor de Origen (Violeta Parra)",
     subtitle: "Café El Llano Orgánico",
     comicText: "CREAR",
@@ -32,26 +62,26 @@ const routeStops = [
     pairingName: "Café El Llano Orgánico",
     pairingDesc: "Una empanada chilena de pino recién horneada y un café de grano tostado: un maridaje perfecto con los acordes de guitarra criolla.",
     image: "images/cafe.png",
-    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4862,-70.6515"
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4843,-70.6527"
   },
   {
-    id: 3,
-    number: 3,
+    id: 5,
+    number: 5,
     title: "Acordes de El Llano (Los Prisioneros)",
     subtitle: "La Fuente del Llano",
     comicText: "REBELDÍA",
-    story: "San Miguel es la cuna de Los Prisioneros. Jorge González, Claudio Narea y Miguel Tapia recorrieron estas calles en los ochenta, componiendo las canciones que cambiarían el rock chileno. Frente a Gran Avenida, esta parada recuerda la energía cruda y la lírica social del trío que se formó en el vecino Liceo N°6 de hombres.",
+    story: "San Miguel es la cuna de Los Prisioneros. Frente a Gran Avenida, esta parada recuerda la energía cruda y la lírica social del trío que se formó en el vecino Liceo N°6 de hombres, un punto de encuentro clásico que sirvió de tertulia juvenil e intelectual a fines del siglo pasado.",
     trackName: "La Voz de los '80 (Estilo Sintetizador)",
     musicType: "prisioneros",
     pairingId: 3,
     pairingName: "La Fuente del Llano",
     pairingDesc: "Disfruta un clásico completo italiano gigante: la tradicional preparación que alimentó las tertulias y la bohemia de los años ochenta.",
     image: "images/fuente.png",
-    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4842,-70.6538"
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4878,-70.6473"
   },
   {
-    id: 4,
-    number: 4,
+    id: 6,
+    number: 6,
     title: "Raíces y Tradición (Los Jaivas)",
     subtitle: "Bistro Latino",
     comicText: "VOLAR",
@@ -62,11 +92,11 @@ const routeStops = [
     pairingName: "Bistro Latino",
     pairingDesc: "Un pastel de choclo gourmet maridado con un cóctel de pisco artesanal aromatizado con hierbas de la cordillera.",
     image: "images/bistro.png",
-    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4851,-70.6500"
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4860,-70.6517"
   },
   {
-    id: 5,
-    number: 5,
+    id: 7,
+    number: 7,
     title: "Distrito Garden (La Ley)",
     subtitle: "Doble Opuesto Bar & Pizza",
     comicText: "SENTIR",
@@ -77,7 +107,7 @@ const routeStops = [
     pairingName: "Doble Opuesto Bar & Pizza",
     pairingDesc: "Una crujiente pizza a la piedra bajo el brillo de los letreros de neón, disfrutando de beats refinados de rock nacional.",
     image: "images/bar.png",
-    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4875,-70.6508"
+    streetViewUrl: "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=-33.4923,-70.6519"
   }
 ];
 
@@ -91,7 +121,7 @@ const foodData = [
     specialty: "Empanada de Pino de Horno y Tarta de Nueces",
     story: "Ubicado en una hermosa casona remodelada del barrio, este café orgánico prioriza ingredientes locales de pequeños productores. Sus empanadas crujientes son famosas en toda la comuna por su sazón criollo casero.",
     comicText: "CASERO",
-    pairingId: 2,
+    pairingId: 4, // Violeta Parra (Ahora parada 4)
     pairingName: "Sabor de Origen (Violeta Parra)",
     pairingDesc: "La atmósfera perfecta para saborear tradiciones criollas y sentir la música de raíz folclórica.",
     image: "images/cafe.png"
@@ -105,7 +135,7 @@ const foodData = [
     specialty: "Completo Italiano y Churrasco de Lomo",
     story: "Una parada histórica y familiar en El Llano. Conserva la mística de las antiguas fuentes de soda santiaguinas con sus mesones formica, mayonesa casera y porciones abundantes que recuerdan las reuniones de amigos de los 80.",
     comicText: "SABROSO",
-    pairingId: 3,
+    pairingId: 5, // Los Prisioneros (Ahora parada 5)
     pairingName: "Acordes de El Llano (Los Prisioneros)",
     pairingDesc: "Escucha la energía rebelde y rocanrolera de San Miguel mientras disfrutas un sándwich clásico y gigante.",
     image: "images/fuente.png"
@@ -119,7 +149,7 @@ const foodData = [
     specialty: "Pastel de Choclo Gourmet y Pisco Sour de Albahaca",
     story: "Un espacio acogedor que mezcla la cocina latinoamericana con toques modernos. Su terraza nocturna, con vista al parque arbolado, es el escenario ideal para revivir la bohemia musical del barrio de manera sofisticada.",
     comicText: "FUSIÓN",
-    pairingId: 4,
+    pairingId: 6, // Los Jaivas (Ahora parada 6)
     pairingName: "Raíces y Tradición (Los Jaivas)",
     pairingDesc: "El maridaje ideal para un viaje de sabores andinos y coctelería mística inspirada en la cordillera.",
     image: "images/bistro.png"
@@ -133,7 +163,7 @@ const foodData = [
     specialty: "Pizza Margarita Neón a la Piedra y Cerveza Artesanal",
     story: "Inspirado en el rock chileno de los 90, este restobar destaca por sus letreros LED, música en vivo los fines de semana y crujientes pizzas artesanales que acompañan las noches bohemias de El Llano.",
     comicText: "ROCK",
-    pairingId: 5,
+    pairingId: 7, // La Ley (Ahora parada 7)
     pairingName: "Distrito Garden (La Ley)",
     pairingDesc: "Acompaña tu porción de pizza con un beat synth-rock refinado bajo las luces de neón del local.",
     image: "images/bar.png"
@@ -191,20 +221,36 @@ document.addEventListener("DOMContentLoaded", () => {
 // 1. WELCOME SCREEN TRANSITIONS (Pantalla 01 a Pantalla 02)
 function setupWelcomeTransitions() {
   const startBtn = document.getElementById("start-tour-btn");
+  const startGpsBtn = document.getElementById("start-gps-btn");
   const welcomeScreen = document.getElementById("welcome-screen");
   const appContainer = document.getElementById("app-container");
+  const navWelcomeBtn = document.getElementById("nav-btn-welcome");
 
-  startBtn.addEventListener("click", () => {
-    // Hide welcome with a smooth slide up
+  function enterApp(useGPS = false) {
     welcomeScreen.classList.add("welcome-hidden");
-    
-    // Show main app
     appContainer.classList.remove("app-hidden");
-
-    // Initialize map on first enter
+    
+    // Configurar Mapa como botón activo en navegación al entrar
+    Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
+    document.getElementById("nav-btn-map").classList.add("active");
+    
     setTimeout(() => {
       initRealMap();
+      if (useGPS) {
+        enableGPSNavigation();
+      }
     }, 400);
+  }
+
+  startBtn.addEventListener("click", () => enterApp(false));
+  startGpsBtn.addEventListener("click", () => enterApp(true));
+
+  navWelcomeBtn.addEventListener("click", () => {
+    // Detener la reproducción musical al volver
+    stopSynthMusic();
+    
+    welcomeScreen.classList.remove("welcome-hidden");
+    appContainer.classList.add("app-hidden");
   });
 }
 
@@ -284,15 +330,15 @@ function initRealMap() {
   if (leafletMap) return; // Prevent double initialization
 
   // Coordinates centered in El Llano, San Miguel
-  const centerCoord = [-33.4862, -70.6518];
+  const centerCoord = [-33.4900, -70.6510];
 
   // Create Map
   leafletMap = L.map('leaflet-map-div', {
     zoomControl: false, // We'll place it or use default touch gestures
-    maxBounds: [[-33.50, -70.67], [-33.47, -70.63]], // Bound map movements to San Miguel
-    minZoom: 14,
+    maxBounds: [[-33.51, -70.67], [-33.46, -70.63]], // Bound map movements to San Miguel
+    minZoom: 13,
     maxZoom: 18
-  }).setView(centerCoord, 15);
+  }).setView(centerCoord, 14);
 
   // Load CartoDB Positron clean map tiles (tinted sepia in CSS)
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -338,16 +384,19 @@ function initRealMap() {
 
   // Setup Map Filter Buttons
   setupMapFilters();
+  setupMapSidebar();
 }
 
 function getStopCoords(id) {
   // Real coordinates in El Llano Subercaseaux, San Miguel
   const coords = {
-    1: [-33.4882, -70.6529], // Metro El Llano
-    2: [-33.4862, -70.6515], // Café El Llano Orgánico / Violeta Parra
-    3: [-33.4842, -70.6538], // La Fuente del Llano / Los Prisioneros
-    4: [-33.4851, -70.6500], // Bistro Latino / Los Jaivas
-    5: [-33.4875, -70.6508]  // Doble Opuesto / La Ley
+    1: [-33.4827, -70.6497], // Metro El Llano
+    2: [-33.4824, -70.6506], // Plaza El Llano
+    3: [-33.4843, -70.6527], // Café El Llano Orgánico / Violeta Parra
+    4: [-33.4860, -70.6517], // Bistro Latino / Los Jaivas
+    5: [-33.4878, -70.6473], // La Fuente del Llano / Los Prisioneros
+    6: [-33.4923, -70.6519], // Doble Opuesto / La Ley
+    7: [-33.4984, -70.6514]  // Mural Ureta Cox (Los Prisioneros)
   };
   return coords[id] || [-33.4862, -70.6518];
 }
@@ -445,6 +494,7 @@ function showMapPopup(stopId) {
       <button class="btn-elegant-gold" style="padding: 6px 12px; font-size: 0.75rem;" onclick="goToMuralFromMap(${stop.id})">Explorar parada</button>
       <button class="btn-pairing-action" style="padding: 6px 12px; font-size: 0.75rem;" onclick="goToFoodFromMap(${stop.id})">Ver local</button>
       <a href="${stop.streetViewUrl}" target="_blank" class="btn-pairing-action" style="padding: 6px 12px; font-size: 0.75rem; border-color: var(--color-secondary); color: var(--color-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">🌐 Street View</a>
+      <button class="btn-pairing-action" style="padding: 6px 12px; font-size: 0.75rem; border-color: var(--color-primary); color: var(--color-primary);" onclick="startRouteFromStop(${stop.id})">📍 Iniciar aquí</button>
     </div>
   `;
 
@@ -594,7 +644,7 @@ function setupQRScanner() {
           showMuralDetails(stopId);
         }, 800);
       } else {
-        status.innerText = "Código erróneo. Ingresa del 1 al 5.";
+        status.innerText = "Código erróneo. Ingresa del 1 al 7.";
         status.style.color = "#FF3B30";
         setTimeout(() => {
           status.innerText = "Buscando código QR...";
@@ -890,6 +940,8 @@ function startSynthMusic(musicType) {
 
     if (musicType === "metro") {
       tempo = 80;
+    } else if (musicType === "plaza") {
+      tempo = 90;
     } else if (musicType === "prisioneros") {
       tempo = 145;
     } else if (musicType === "violeta") {
@@ -978,6 +1030,11 @@ function playSequenceStep(type, step) {
       bass: [130.8, 130.8, 164.8, 164.8], // C3, E3
       lead: [523.3, 659.3, 784.0, 987.8, 0, 0, 0, 0, 523.3, 0, 0, 0, 0, 0, 0, 0] // Soft bell chord C-E-G-B
     },
+    // Plaza acoustic chime (Nature chime)
+    plaza: {
+      bass: [130.8, 164.8, 196.0, 261.6], // C3, E3, G3, C4
+      lead: [523.3, 0, 659.3, 0, 784.0, 0, 1046.5, 0, 784.0, 0, 659.3, 0, 523.3, 0, 0, 0]
+    },
     // Synth pop driving notes (Jorge Gonzalez)
     prisioneros: {
       bass: [110.0, 110.0, 130.8, 146.8, 110.0, 110.0, 164.8, 146.8],
@@ -1015,7 +1072,7 @@ function playSequenceStep(type, step) {
   // Lead
   const leadFreq = currentMelody.lead[step];
   if (leadFreq && leadFreq > 0) {
-    playSynthNote(leadFreq, type === "violeta" || type === "metro" ? "sine" : "triangle", 0.06, 0.20, now);
+    playSynthNote(leadFreq, type === "violeta" || type === "metro" || type === "plaza" ? "sine" : "triangle", 0.06, 0.20, now);
     
     if (type === "laley" || type === "jaivas") {
       playSynthNote(leadFreq, "triangle", 0.02, 0.12, now + 0.12);
@@ -1039,4 +1096,153 @@ function playSynthNote(freq, oscType, volume, duration, time) {
   
   osc.start(time);
   osc.stop(time + duration + 0.05);
+}
+
+// Dynamic Route Sidebar Navigation
+function setupMapSidebar() {
+  const sidebarList = document.getElementById("sidebar-stops-list");
+  if (!sidebarList) return;
+  sidebarList.innerHTML = "";
+
+  routeStops.forEach(stop => {
+    const btn = document.createElement("button");
+    btn.className = "sidebar-stop-btn";
+    btn.innerHTML = `
+      <span class="stop-number-badge">${stop.number}</span>
+      <span class="stop-name-text">${stop.title.split("(")[0].trim()}</span>
+    `;
+    btn.addEventListener("click", () => {
+      const markerObj = mapMarkers.find(m => m.id === stop.id);
+      if (markerObj) {
+        resetMarkerStyles();
+        markerObj.marker.setIcon(createNumberedIcon(stop.number, true));
+        leafletMap.setView(getStopCoords(stop.id), 16);
+        showMapPopup(stop.id);
+      }
+    });
+    sidebarList.appendChild(btn);
+  });
+}
+
+// GPS / Starting Point Management
+let userLocationMarker = null;
+let userToRoutePolyline = null;
+
+function enableGPSNavigation() {
+  if (!navigator.geolocation) {
+    alert("La geolocalización no está soportada por tu navegador. Comenzando desde el inicio.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const userLat = position.coords.latitude;
+      const userLon = position.coords.longitude;
+      const userLatLng = [userLat, userLon];
+
+      // Check if too far from El Llano
+      const dist = getDistanceInKm(userLat, userLon, -33.4882, -70.6529);
+      let finalLatLng = userLatLng;
+      if (dist > 15) {
+        finalLatLng = [-33.4895, -70.6540]; // Place simulated user inside the park
+        alert("Te encuentras lejos de El Llano. Hemos colocado tu ubicación de prueba (📍 Icono azul que pulsa) cerca del parque para que pruebes la ruta desde allí.");
+      }
+
+      if (leafletMap) {
+        if (userLocationMarker) {
+          leafletMap.removeLayer(userLocationMarker);
+        }
+        
+        userLocationMarker = L.marker(finalLatLng, {
+          icon: L.divIcon({
+            html: `<div class="user-gps-pulse-marker">📍</div>`,
+            className: '',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          })
+        }).addTo(leafletMap);
+        
+        userLocationMarker.bindPopup("<b>Tú estás aquí</b><br>Buscando parada más cercana...").openPopup();
+
+        // Calculate nearest stop
+        let nearestStop = routeStops[0];
+        let minDist = parseFloat('Infinity');
+        
+        routeStops.forEach(stop => {
+          const coords = getStopCoords(stop.id);
+          const d = getDistanceInKm(finalLatLng[0], finalLatLng[1], coords[0], coords[1]);
+          if (d < minDist) {
+            minDist = d;
+            nearestStop = stop;
+          }
+        });
+
+        // Draw dotted green line from user GPS to nearest stop
+        if (userToRoutePolyline) {
+          leafletMap.removeLayer(userToRoutePolyline);
+        }
+        
+        const stopCoords = getStopCoords(nearestStop.id);
+        userToRoutePolyline = L.polyline([finalLatLng, stopCoords], {
+          color: '#3D5A45',
+          weight: 4,
+          dashArray: '5, 5',
+          opacity: 0.85
+        }).addTo(leafletMap);
+
+        // Center map to show both
+        const bounds = L.latLngBounds([finalLatLng, stopCoords]);
+        leafletMap.fitBounds(bounds, { padding: [60, 60] });
+
+        // Highlight nearest stop
+        const markerObj = mapMarkers.find(m => m.id === nearestStop.id);
+        if (markerObj) {
+          setTimeout(() => {
+            resetMarkerStyles();
+            markerObj.marker.setIcon(createNumberedIcon(nearestStop.number, true));
+            showMapPopup(nearestStop.id);
+          }, 1200);
+        }
+      }
+    },
+    (error) => {
+      alert("No pudimos obtener tu ubicación actual. Comenzando desde el inicio.");
+    },
+    { enableHighAccuracy: true, timeout: 5000 }
+  );
+}
+
+window.startRouteFromStop = function(id) {
+  const stop = routeStops.find(s => s.id === id);
+  if (!stop) return;
+  
+  const coords = getStopCoords(id);
+  leafletMap.setView(coords, 17);
+
+  const markerObj = mapMarkers.find(m => m.id === id);
+  if (markerObj) {
+    resetMarkerStyles();
+    markerObj.marker.setIcon(createNumberedIcon(markerObj.stopNumber, true));
+  }
+
+  alert(`Has iniciado la ruta desde la parada: "${stop.title}".`);
+  goToMuralFromMap(id);
+};
+
+// Helper distance formulas
+function getDistanceInKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = deg2rad(lat2-lat1);
+  const dLon = deg2rad(lon2-lon1); 
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  return R * c;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180);
 }

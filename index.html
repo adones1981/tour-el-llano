@@ -101,9 +101,14 @@
       </div>
 
       <!-- Action Button -->
-      <button id="start-tour-btn" class="btn-elegant-primary">
-        Comenzar recorrido &nbsp; →
-      </button>
+      <div class="welcome-action-group" style="display:flex; flex-direction:column; gap:12px; width:100%; max-width:320px; margin:0 auto;">
+        <button id="start-tour-btn" class="btn-elegant-primary" style="width:100%;">
+          Comenzar desde el inicio &nbsp; →
+        </button>
+        <button id="start-gps-btn" class="btn-elegant-primary" style="width:100%; background-color: var(--color-secondary); border-color: var(--color-secondary);">
+          Comenzar desde mi ubicación 📍
+        </button>
+      </div>
     </div>
 
     <!-- Decorative Soft Plant Bottom Left -->
@@ -139,15 +144,25 @@
           <p>Explora El Llano a través de su historia, música y sabores.</p>
         </div>
 
-        <div class="map-container-wrapper">
-          <!-- Real Leaflet Map Container -->
-          <div id="leaflet-map-div" class="elegant-map-frame" aria-label="Mapa interactivo real del Barrio El Llano"></div>
+        <div class="map-layout-row">
+          <!-- Sidebar Route Selector -->
+          <div class="map-route-sidebar" id="map-route-sidebar">
+            <span class="sidebar-title">Paradas de la Ruta:</span>
+            <div class="sidebar-stops-list" id="sidebar-stops-list">
+              <!-- Creados dinámicamente en app.js -->
+            </div>
+          </div>
 
-          <!-- Quick Filters on Map -->
-          <div class="map-overlay-filters">
-            <button id="filter-all" class="filter-chip active">Todo</button>
-            <button id="filter-murals" class="filter-chip">Música 🎨</button>
-            <button id="filter-food" class="filter-chip">Sabores 🍔</button>
+          <div class="map-container-wrapper">
+            <!-- Real Leaflet Map Container -->
+            <div id="leaflet-map-div" class="elegant-map-frame" aria-label="Mapa interactivo real del Barrio El Llano"></div>
+
+            <!-- Quick Filters on Map -->
+            <div class="map-overlay-filters">
+              <button id="filter-all" class="filter-chip active">Todo</button>
+              <button id="filter-murals" class="filter-chip">Música 🎨</button>
+              <button id="filter-food" class="filter-chip">Sabores 🍔</button>
+            </div>
           </div>
         </div>
 
@@ -366,7 +381,7 @@
           </div>
 
           <div class="scan-manual-block">
-            <input type="text" id="qr-code-input" placeholder="Ingresa código (1 - 4)" aria-label="Código numérico">
+            <input type="text" id="qr-code-input" placeholder="Ingresa código (1 - 7)" aria-label="Código numérico">
             <button id="qr-submit-btn" class="btn-elegant-gold">Activar</button>
           </div>
         </div>
@@ -375,10 +390,12 @@
           <h3 class="sim-title">Simular Escaneo (Prueba Rápida)</h3>
           <div class="sim-buttons-layout">
             <button class="sim-btn-elegant" data-code="1"><span>1</span> Estación El Llano</button>
-            <button class="sim-btn-elegant" data-code="2"><span>2</span> Violeta Parra (Café)</button>
-            <button class="sim-btn-elegant" data-code="3"><span>3</span> Los Prisioneros (Fuente)</button>
-            <button class="sim-btn-elegant" data-code="4"><span>4</span> Los Jaivas (Bistro)</button>
-            <button class="sim-btn-elegant" data-code="5"><span>5</span> La Ley (Doble Opuesto)</button>
+            <button class="sim-btn-elegant" data-code="2"><span>2</span> Plaza El Llano</button>
+            <button class="sim-btn-elegant" data-code="3"><span>3</span> Mural Ureta Cox (Prisioneros)</button>
+            <button class="sim-btn-elegant" data-code="4"><span>4</span> Violeta Parra (Café)</button>
+            <button class="sim-btn-elegant" data-code="5"><span>5</span> Los Prisioneros (Fuente)</button>
+            <button class="sim-btn-elegant" data-code="6"><span>6</span> Los Jaivas (Bistro)</button>
+            <button class="sim-btn-elegant" data-code="7"><span>7</span> La Ley (Doble Opuesto)</button>
           </div>
         </div>
       </section>
@@ -388,6 +405,12 @@
     <!-- ELEGANT BOTTOM TAB NAVIGATION (Exactly like reference) -->
     <nav class="elegant-bottom-nav">
       <ul class="bottom-nav-list">
+        <li class="bottom-nav-item">
+          <button id="nav-btn-welcome" class="bottom-nav-link" aria-label="Volver a Portada">
+            <span class="nav-icon-elegant">🏠</span>
+            <span class="nav-text-elegant">Portada</span>
+          </button>
+        </li>
         <li class="bottom-nav-item">
           <button id="nav-btn-map" class="bottom-nav-link active" aria-controls="view-map" aria-selected="true">
             <span class="nav-icon-elegant">🗺️</span>
