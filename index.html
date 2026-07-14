@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta El Llano - Sabores y Acordes</title>
+  <!-- Google Fonts: Playfair Display (Elegante serif) y Outfit (Moderna sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet.js CSS para mapa real -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-normal text-normal">
+
+  <!-- ACCESSIBILITY FLOATING BUTTON & PANEL (Elegante) -->
+  <button id="accessibility-btn" class="access-btn-elegant" aria-label="Opciones de accesibilidad" aria-expanded="false">
+    ♿
+  </button>
+  
+  <div id="accessibility-panel" class="elegant-card access-panel" role="dialog" aria-modal="true" aria-label="Panel de Accesibilidad" hidden>
+    <div class="panel-header">
+      <h2>Accesibilidad</h2>
+      <button id="close-accessibility" class="close-btn-elegant" aria-label="Cerrar panel">&times;</button>
+    </div>
+    <div class="panel-body">
+      <!-- Contrast Toggle -->
+      <div class="control-group">
+        <span class="control-label">Contraste visual:</span>
+        <div class="toggle-group-elegant">
+          <button id="contrast-normal" class="toggle-btn active" aria-pressed="true">Normal</button>
+          <button id="contrast-high" class="toggle-btn" aria-pressed="false">Alto Contraste</button>
+        </div>
+      </div>
+      <!-- Font Size Toggle -->
+      <div class="control-group">
+        <span class="control-label">Tamaño del texto:</span>
+        <div class="toggle-group-elegant">
+          <button id="font-normal" class="toggle-btn active" aria-pressed="true">A</button>
+          <button id="font-large" class="toggle-btn" aria-pressed="false">A+</button>
+          <button id="font-xlarge" class="toggle-btn" aria-pressed="false">A++</button>
+        </div>
+      </div>
+      <!-- Text-to-Speech Toggle -->
+      <div class="control-group switch-group">
+        <span class="control-label">Lector de voz automático:</span>
+        <label class="switch-elegant">
+          <input type="checkbox" id="tts-toggle" aria-label="Activar lectura de voz al abrir fichas">
+          <span class="slider-elegant"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 01: BIENVENIDA -->
+  <section id="welcome-screen" class="welcome-container active">
+    <!-- SVG Background Line Art (Guitarras, Iglesia, Hojas de fondo suave) -->
+    <div class="welcome-background-art">
+      <svg viewBox="0 0 400 800" width="100%" height="100%" fill="none" stroke="rgba(158, 116, 63, 0.08)" stroke-width="1.5">
+        <!-- Guitar Outline Top Right -->
+        <path d="M320,100 C300,100 290,130 300,150 C290,165 295,195 320,195 C345,195 350,165 340,150 C350,130 340,100 320,100 Z" />
+        <line x1="320" y1="100" x2="320" y2="40" />
+        <line x1="315" y1="40" x2="325" y2="40" />
+        <circle cx="320" cy="147" r="10" />
+        
+        <!-- Church Facade Outline in Background -->
+        <path d="M20,620 L20,780 L380,780 L380,620 L300,580 L300,520 L280,500 L260,520 L260,580 L140,580 L140,520 L120,500 L100,520 L100,580 Z" />
+        <path d="M120,500 L120,440 L110,430 L130,430 Z" />
+        <path d="M280,500 L280,440 L270,430 L290,430 Z" />
+        <!-- Soft plant outlines at bottom -->
+        <path d="M20,780 Q40,730 80,750 M20,780 Q50,710 110,740 M20,780 Q60,690 130,730" />
+      </svg>
+    </div>
+
+    <div class="welcome-content">
+      <div class="welcome-musical-notes">🎵 &nbsp;&nbsp;&nbsp; 🎶</div>
+      
+      <h1 class="welcome-title">Ruta El Llano:<br><span class="welcome-title-sub">Sabores y Acordes</span></h1>
+      
+      <p class="welcome-tagline">
+        Un recorrido por la historia, la música y los sabores de El Llano San Miguel.
+      </p>
+
+      <!-- Welcome Columns / Icons -->
+      <div class="welcome-icons-grid">
+        <div class="welcome-icon-item">
+          <div class="icon-circle">🍴</div>
+          <span>Sabores</span>
+        </div>
+        <div class="welcome-icon-item">
+          <div class="icon-circle">🎸</div>
+          <span>Música</span>
+        </div>
+        <div class="welcome-icon-item">
+          <div class="icon-circle">⛪</div>
+          <span>Cultura</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button id="start-tour-btn" class="btn-elegant-primary">
+        Comenzar recorrido &nbsp; →
+      </button>
+    </div>
+
+    <!-- Decorative Soft Plant Bottom Left -->
+    <div class="decorative-leaves">
+      <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#3D5A45" stroke-width="1.5" opacity="0.3">
+        <path d="M0,100 Q40,60 80,80" />
+        <path d="M20,80 Q25,65 15,60 Q30,68 35,83" fill="#3D5A45" />
+        <path d="M40,70 Q45,55 35,50 Q50,58 55,73" fill="#3D5A45" />
+        <path d="M60,65 Q68,52 58,45 Q70,55 72,70" fill="#3D5A45" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- MAIN APP CONTAINER (Initially hidden or welcome screen transitions out) -->
+  <div id="app-container" class="app-hidden">
+    
+    <!-- HEADER -->
+    <header class="elegant-header">
+      <div class="header-content">
+        <span class="header-small-title">Ruta El Llano</span>
+        <h1 class="header-main-title">Sabores y Acordes</h1>
+      </div>
+      <button id="info-btn" class="info-icon" aria-label="Información de la ruta">ⓘ</button>
+    </header>
+
+    <!-- CONTENT VIEWS -->
+    <main id="main-content">
+      
+      <!-- VIEW: MAP (Pantalla 02) -->
+      <section id="view-map" class="app-view active">
+        <div class="view-intro-elegant">
+          <h2>Mapa del recorrido</h2>
+          <p>Explora El Llano a través de su historia, música y sabores.</p>
+        </div>
+
+        <div class="map-container-wrapper">
+          <!-- Real Leaflet Map Container -->
+          <div id="leaflet-map-div" class="elegant-map-frame" aria-label="Mapa interactivo real del Barrio El Llano"></div>
+
+          <!-- Quick Filters on Map -->
+          <div class="map-overlay-filters">
+            <button id="filter-all" class="filter-chip active">Todo</button>
+            <button id="filter-murals" class="filter-chip">Música 🎨</button>
+            <button id="filter-food" class="filter-chip">Sabores 🍔</button>
+          </div>
+        </div>
+
+        <!-- Route Statistics (Exactly like image) -->
+        <div class="route-stats-card elegant-card">
+          <div class="stat-item">
+            <span class="stat-icon">⏱️</span>
+            <div class="stat-info">
+              <span class="stat-label">Tiempo total</span>
+              <span class="stat-value">~26 min</span>
+            </div>
+          </div>
+          <div class="stat-item border-left-right">
+            <span class="stat-icon">📍</span>
+            <div class="stat-info">
+              <span class="stat-label">Distancia total</span>
+              <span class="stat-value">~2.3 km</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">🚶</span>
+            <div class="stat-info">
+              <span class="stat-label">Recorrido</span>
+              <span class="stat-value">A pie 100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt Guide Panel -->
+        <div class="guide-prompt-panel">
+          <span class="guide-icon">👉</span>
+          <span class="guide-text">Selecciona una parada en el mapa para descubrir más información.</span>
+        </div>
+
+        <!-- QUICK POPUP CARD ONCE MARKER IS CLICKED -->
+        <div id="map-popup-card" class="elegant-card map-popup" hidden>
+          <button id="close-map-popup" class="close-btn-elegant" aria-label="Cerrar ventana emergente">&times;</button>
+          <div id="map-popup-content">
+            <!-- Dynamic Content -->
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: MURAL DETAILS / MUSIC -->
+      <section id="view-murals" class="app-view">
+        <div class="list-container" id="murals-list">
+          <h2 class="view-section-title">Paradas Musicales</h2>
+          <div id="murals-grid" class="elegant-list-stack">
+            <!-- Dynamic list -->
+          </div>
+        </div>
+
+        <div class="detail-container" id="mural-detail-view" hidden>
+          <button id="back-to-murals" class="btn-back-elegant">← Volver al listado</button>
+          
+          <div class="elegant-card detail-card">
+            <div class="detail-header-elegant">
+              <span id="det-mural-num" class="detail-num-badge">3</span>
+              <div class="detail-titles-block">
+                <h2 id="det-mural-title" class="detail-headline">Mural Title</h2>
+                <span id="det-mural-artist" class="detail-subhead">Artist Name</span>
+              </div>
+            </div>
+
+            <!-- Soft Elegant Illustration Placeholder -->
+            <div id="det-mural-art" class="elegant-illustration-frame">
+              <div class="illustration-overlay-pattern"></div>
+              <div class="illustration-icon-badge">🎸</div>
+            </div>
+
+            <div class="detail-story-block">
+              <span class="story-category-tag">Historia y Melodía</span>
+              <p id="det-mural-story-text" class="story-body-text">La historia del mural...</p>
+              <button id="tts-read-btn" class="btn-tts-elegant">🔊 Escuchar narración por voz</button>
+            </div>
+
+            <!-- GOOGLE STREET VIEW PREVIEW CARD -->
+            <div class="elegant-streetview-card" style="margin-bottom: 24px;">
+              <span class="story-category-tag" style="background-color: var(--color-secondary-light); color: white;">🌐 Google Street View 360°</span>
+              <div class="streetview-preview-container" id="det-streetview-btn" role="button" tabindex="0" aria-label="Abrir Google Street View en 360 grados" style="position:relative; width:100%; height:130px; border-radius:10px; overflow:hidden; border:1px solid var(--border-color); cursor:pointer; margin-top:10px;">
+                <img src="images/streetview.png" style="width:100%; height:100%; object-fit:cover; filter: brightness(0.85); transition: var(--transition-smooth);" alt="Vista de calle simulada">
+                <div class="streetview-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:white; text-shadow: 0 2px 8px rgba(0,0,0,0.85);">
+                  <span class="streetview-play-icon" style="font-size:2rem; animation: wobble 2.5s infinite;">🔄</span>
+                  <span class="streetview-play-text" style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Ver entorno 360° real</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ELEGANT AUDIO PLAYER -->
+            <div class="elegant-audio-player">
+              <div class="audio-track-info">
+                <span class="player-notes-anim">🎵</span>
+                <div class="track-details">
+                  <span id="det-track-name" class="audio-title">Melodía en Sintetizador</span>
+                  <span class="audio-sub">Sintetizador Web Audio API</span>
+                </div>
+              </div>
+
+              <!-- Sleek Wave Equalizer -->
+              <div class="sleek-wave-visualizer" id="audio-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
+
+              <div class="audio-controls-row">
+                <button id="player-play-btn" class="btn-audio-play" aria-label="Reproducir melodía">▶️</button>
+                <div class="audio-progress-track">
+                  <div class="audio-progress-bar" id="player-progress-fill"></div>
+                </div>
+                <span id="player-time" class="audio-time-label">0:00</span>
+              </div>
+            </div>
+
+            <!-- FOOD PAIRING BOX -->
+            <div class="elegant-pairing-card pairing-food">
+              <span class="pairing-badge-label">🍴 Sabor Recomendado</span>
+              <div class="pairing-body">
+                <h4 id="det-pairing-name">Fuente de Soda X</h4>
+                <p id="det-pairing-desc">Un maridaje perfecto con la música...</p>
+                <button id="pairing-go-btn" class="btn-pairing-action">Visitar local / Ver en mapa</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: GASTRONOMY -->
+      <section id="view-food" class="app-view">
+        <div class="list-container" id="food-list">
+          <h2 class="view-section-title">Sabores Gastronómicos</h2>
+          <div id="food-grid" class="elegant-list-stack">
+            <!-- Dynamic food list -->
+          </div>
+        </div>
+
+        <div class="detail-container" id="food-detail-view" hidden>
+          <button id="back-to-food" class="btn-back-elegant">← Volver al listado</button>
+          
+          <div class="elegant-card detail-card">
+            <div class="detail-header-elegant">
+              <span id="det-food-num" class="detail-num-badge">2</span>
+              <div class="detail-titles-block">
+                <h2 id="det-food-title" class="detail-headline">Nombre Restaurante</h2>
+                <span id="det-food-type" class="detail-subhead">Tipo Comida</span>
+              </div>
+            </div>
+
+            <div id="det-food-art" class="elegant-illustration-frame illustration-food">
+              <div class="illustration-overlay-pattern"></div>
+              <div class="illustration-icon-badge">🍴</div>
+            </div>
+
+            <div class="elegant-info-table">
+              <div class="table-row">
+                <span class="row-label">📍 Dirección:</span>
+                <span id="det-food-address" class="row-val">Calle 123, El Llano</span>
+              </div>
+              <div class="table-row">
+                <span class="row-label">⏰ Horario:</span>
+                <span id="det-food-hours" class="row-val">18:00 a 01:00 hrs</span>
+              </div>
+              <div class="table-row">
+                <span class="row-label">⭐ Especialidad:</span>
+                <span id="det-food-specialty" class="row-val">Completo Italiano</span>
+              </div>
+            </div>
+
+            <div class="detail-story-block">
+              <span class="story-category-tag">El Sabor del Barrio</span>
+              <p id="det-food-story-text" class="story-body-text">Historia del local...</p>
+            </div>
+
+            <!-- SUGGESTED ART PAIRING -->
+            <div class="elegant-pairing-card pairing-music">
+              <span class="pairing-badge-label">🎸 Música y Mural Relacionado</span>
+              <div class="pairing-body">
+                <h4 id="det-music-pairing-name">Mural X</h4>
+                <p id="det-music-pairing-desc">La música ideal para acompañar este sabor...</p>
+                <button id="food-pairing-go-btn" class="btn-pairing-action">Escuchar música / Ver mural</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: SCAN (QR SIMULATOR - ELEGANT) -->
+      <section id="view-scan" class="app-view">
+        <div class="view-intro-elegant text-center">
+          <h2>Activar Ruta Escaneando</h2>
+          <p>Usa la cámara de tu teléfono para escanear los códigos QR en los murales del recorrido o ingresa el código del mural.</p>
+        </div>
+
+        <div class="scan-wrapper elegant-card">
+          <div class="scan-camera-mock">
+            <div class="camera-lens-glare"></div>
+            <div class="scan-aim-box">
+              <div class="aim-corner top-left"></div>
+              <div class="aim-corner top-right"></div>
+              <div class="aim-corner bottom-left"></div>
+              <div class="aim-corner bottom-right"></div>
+              <div class="scan-pulse-line"></div>
+            </div>
+            <span class="camera-text" id="scanner-status">Buscando código QR...</span>
+          </div>
+
+          <div class="scan-manual-block">
+            <input type="text" id="qr-code-input" placeholder="Ingresa código (1 - 4)" aria-label="Código numérico">
+            <button id="qr-submit-btn" class="btn-elegant-gold">Activar</button>
+          </div>
+        </div>
+
+        <div class="simulation-elegant-block">
+          <h3 class="sim-title">Simular Escaneo (Prueba Rápida)</h3>
+          <div class="sim-buttons-layout">
+            <button class="sim-btn-elegant" data-code="1"><span>1</span> Estación El Llano</button>
+            <button class="sim-btn-elegant" data-code="2"><span>2</span> Violeta Parra (Café)</button>
+            <button class="sim-btn-elegant" data-code="3"><span>3</span> Los Prisioneros (Fuente)</button>
+            <button class="sim-btn-elegant" data-code="4"><span>4</span> Los Jaivas (Bistro)</button>
+            <button class="sim-btn-elegant" data-code="5"><span>5</span> La Ley (Doble Opuesto)</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ELEGANT BOTTOM TAB NAVIGATION (Exactly like reference) -->
+    <nav class="elegant-bottom-nav">
+      <ul class="bottom-nav-list">
+        <li class="bottom-nav-item">
+          <button id="nav-btn-map" class="bottom-nav-link active" aria-controls="view-map" aria-selected="true">
+            <span class="nav-icon-elegant">🗺️</span>
+            <span class="nav-text-elegant">Mapa</span>
+          </button>
+        </li>
+        <li class="bottom-nav-item">
+          <button id="nav-btn-murals" class="bottom-nav-link" aria-controls="view-murals" aria-selected="false">
+            <span class="nav-icon-elegant">🎶</span>
+            <span class="nav-text-elegant">Música</span>
+          </button>
+        </li>
+        <li class="bottom-nav-item">
+          <button id="nav-btn-food" class="bottom-nav-link" aria-controls="view-food" aria-selected="false">
+            <span class="nav-icon-elegant">🍴</span>
+            <span class="nav-text-elegant">Sabores</span>
+          </button>
+        </li>
+        <li class="bottom-nav-item">
+          <button id="nav-btn-scan" class="bottom-nav-link" aria-controls="view-scan" aria-selected="false">
+            <span class="nav-icon-elegant">📷</span>
+            <span class="nav-text-elegant">Escáner</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    
+  </div>
+
+  <!-- Leaflet.js script file -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
